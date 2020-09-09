@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window-coordinates</title>
+    <style>
+      body {
+        background-color: #333;
+        margin: 0;
+      }
+      .box {
+        width: 250px;
+        height: 250px;
+        background-color: wheat;
+        margin: 10px;
+      }
+      .special {
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box special"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <script>
+      const specialBox = document.querySelector('.special');
+      function printMousePos(e) {
+        const cursorX = event.pageX;
+        const cursorY = event.pageY;
+        console.log('x: ' + cursorX + ', y: ' + cursorY);
+      }
+      window.addEventListener('click', () => {
+        console.log(specialBox.getBoundingClientRect());
+        console.log(
+          `client: ${specialBox.getBoundingClientRect().left}, ${
+            specialBox.getBoundingClientRect().top
+          }`
+        );
+        printMousePos(event);
+      });
+    </script>
+  </body>
+</html>
