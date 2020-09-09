@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Self007</title>
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+        margin: 0;
+      }
+      p {
+        position: fixed;
+        width: 200px;
+        margin-left: 8px;
+      }
+      img {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+      }
+      div {
+        position: fixed;
+      }
+      div.top {
+        width: 100%;
+        border-bottom: 1px solid white;
+      }
+      div.left {
+        height: 100%;
+        border-right: 1px solid white;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="images/target.png" alt="" class="target" />
+    <p>0px, 0px</p>
+    <div class="left"></div>
+    <div class="top"></div>
+    <script>
+      const para = document.querySelector('p');
+      const topLine = document.querySelector('.top');
+      const leftLine = document.querySelector('.left');
+      const target = document.querySelector('.target');
+
+      document.addEventListener('pointermove', (event) => {
+        shot007(event);
+      });
+      document.addEventListener('reload', (event) => {
+        shot007(event);
+      });
+
+      function shot007(event) {
+        const clientX = event.clientX;
+        const clientY = event.clientY;
+        para.style.top = clientY + 'px';
+        para.style.left = clientX + 'px';
+        para.textContent = `${clientX}px,${clientY}px`;
+        topLine.style.height = clientY + 'px';
+        leftLine.style.width = clientX + 'px';
+        target.style.top = clientY - target.width / 2 + 'px';
+        target.style.left = clientX - target.height / 2 + 'px';
+      }
+    </script>
+  </body>
+</html>
