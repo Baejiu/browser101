@@ -1,5 +1,5 @@
 'use strict';
-
+const list = document.querySelector('.list');
 const listText = document.querySelector('.list__text');
 const listDel = document.querySelector('.list__del');
 const input = document.querySelector('input');
@@ -12,15 +12,28 @@ function updateValue(e) {
   if (input.value == null || '') {
     return;
   }
-  console.log(e.target.value || input.value);
-  createList();
+  const value = e.target.value || input.value;
+  createList(value);
   input.value = null;
 }
+function createList(value) {
+  const newListItem = document.createElement('div');
+  const newListText = document.createElement('p');
+  const newListDel = document.createElement('span');
+  newListItem.appendChild(newListText);
+  newListItem.appendChild(newListDel);
+  newListItem.setAttribute('class', 'list__item');
+  newListText.setAttribute('class', 'list__text');
+  newListDel.setAttribute('class', 'list__del');
+  newListText.textContent = value;
+  newListDel.innerHTML = '<i class="far fa-trash-alt"></i>';
+  list.appendChild(newListItem);
+}
 
-function createList() {
-  const list = document.querySelector('.list');
-  const listItem = document.createElement('div');
-  listItem.setAttribute('class', 'list__item');
-  listItem.textContent = 'good';
-  list.appendChild(listItem);
+listDel.addEventListener('click', deleteList(event));
+
+function deleteList(event) {
+  const delBtn = event.target;
+  const div = delBtn.parentNoed;
+  list.removeChild(div);
 }
