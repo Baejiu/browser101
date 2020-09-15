@@ -4,10 +4,10 @@ const listText = document.querySelector('.list__text');
 const listDel = document.querySelector('.list__del');
 const input = document.querySelector('input');
 const btnAdd = document.querySelector('.btn__add');
-const log = document.getElementById('values');
 
 input.addEventListener('change', updateValue);
 btnAdd.addEventListener('click', updateValue);
+
 function updateValue(e) {
   if (input.value == null || '') {
     return;
@@ -30,10 +30,7 @@ function createList(value) {
   list.appendChild(newListItem);
 }
 
-listDel.addEventListener('click', deleteList(event));
-
-function deleteList(event) {
-  const delBtn = event.target;
-  const div = delBtn.parentNoed;
-  list.removeChild(div);
-}
+listDel.addEventListener('click', (event) => {
+  const li = event.target.parentNode.parentNode;
+  list.removeChild(li);
+});
