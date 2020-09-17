@@ -18,6 +18,13 @@ function updateValue(e) {
   createList(value);
   input.value = null;
 }
+list.addEventListener('click', (event) => {
+  if (event.target.tagName == 'I') {
+    const Btn = event.target;
+    const li = Btn.parentNode.parentNode;
+    list.removeChild(li);
+  }
+});
 
 function createList(value) {
   const newListItem = document.createElement('li');
@@ -31,9 +38,4 @@ function createList(value) {
   newListText.textContent = value;
   newListDel.innerHTML = '<i class="far fa-trash-alt"></i>';
   list.appendChild(newListItem);
-  newListDel.addEventListener('click', (event) => {
-    const Btn = event.target;
-    const li = Btn.parentNode.parentNode;
-    list.removeChild(li);
-  });
 }
