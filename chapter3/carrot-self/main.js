@@ -49,6 +49,7 @@ function gameReStart() {
   gameStart();
 }
 function gameStart() {
+  bgSound.play();
   count = 10;
   remainder.innerHTML = `${count}`;
   changeBtn();
@@ -149,4 +150,3 @@ function createBug() {
   bugNumber--;
   return bug;
 }
-bgSound.play();
