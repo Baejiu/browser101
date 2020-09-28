@@ -59,22 +59,36 @@ button:hover {
   position: relative;
   height: 58%;
   width: 96%;
-  outline: 1px solid red;
   margin: 0 2% 2%;
 }
-
-.game__result {
+.game__item {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+}
+.game__item.carrot {
+  background-image: url(img/carrot.png);
+  background-position: center;
+  background-size: contain;
+}
+.game__item.bug {
+  background-image: url(img/bug.png);
+  background-position: center;
+  background-size: contain;
+}
+.game__replay,
+.game__result--win,
+.game__result--lost {
   background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   top: 50%;
   left: 50%;
+  z-index: 9;
   transform: translate(-50%, -50%);
   display: none;
   flex-direction: column;
   align-items: center;
   padding: 3rem 10rem;
-}
-.game__replay {
 }
 .game__text {
   font-size: 2rem;

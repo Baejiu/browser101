@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>carrot-game</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
     <script
       src="https://kit.fontawesome.com/5fdf801efc.js"
       crossorigin="anonymous"
@@ -21,17 +21,22 @@
         <div class="header__timer">0:10</div>
         <div class="header__remainder">10</div>
       </header>
-      <section class="game">
-        <div class="game__result">
-          <button class="game__replay"><i class="fas fa-redo-alt"></i></button>
-          <span class="game__text">YOUR WIN</span>
-        </div>
-
-        <div class="game__result">
-          <button class="game__replay"><i class="fas fa-redo-alt"></i></button>
-          <span class="game__text">YOUR LOST</span>
-        </div>
-      </section>
+      <section class="game"></section>
+      <div class="game__result--win">
+        <button class="replay-btn">
+          <i class="fas fa-redo-alt"></i>
+        </button>
+        <p class="game__text">YOUR WIN</p>
+      </div>
+      <div class="game__result--lost">
+        <button class="replay-btn"><i class="fas fa-redo-alt"></i></button>
+        <p class="game__text">YOUR LOST</p>
+      </div>
+      <div class="game__replay">
+        <button class="ing-btn"><i class="fas fa-redo-alt"></i></button>
+        <button class="replay-btn">새로시작</button>
+        <p class="game__text">계속 진행? 새로시작?</p>
+      </div>
     </div>
   </body>
 </html>
