@@ -1,8 +1,8 @@
 'use strict';
 const CARROT_SIZE = 80;
-const CARROT_COUNT = 5;
-const BUG_COUNT = 5;
-const GAME__DURATION_SEC = 5;
+const CARROT_COUNT = 10;
+const BUG_COUNT = 10;
+const GAME__DURATION_SEC = 10;
 
 const field = document.querySelector('.game__field');
 const fieldRect = field.getBoundingClientRect();
@@ -46,6 +46,7 @@ function startGame() {
   showStopButton();
   showTimerAndScore();
   startGameTimer();
+  playSound(bgSound);
 }
 
 function stopGame() {
@@ -53,11 +54,20 @@ function stopGame() {
   stopGameTimer();
   hideGameButton();
   showPopUpWithText('REPLAY?');
+  playSound(alertSound);
+  stopSound(bgSound);
 }
 
 function finishGame(win) {
   started = false;
   hideGameButton();
+  if (win) {
+    playSound(winSound);
+  } else {
+    playSound(bugSound);
+  }
+  stopGameTimer();
+  stopSound(bgSound);
   showPopUpWithText(win ? 'YOU WON!' : 'YOU LOST');
 }
 
@@ -65,6 +75,7 @@ function showStopButton() {
   const icon = gameBtn.querySelector('.fas');
   icon.classList.add('fa-stop');
   icon.classList.remove('fa-play');
+  gameBtn.style.visibility = 'visible';
 }
 function hideGameButton() {
   gameBtn.style.visibility = 'hidden';
@@ -103,6 +114,7 @@ function hidePopUp() {
 }
 
 function initGame() {
+  score = 0;
   field.innerHTML = '';
   gameScore.innerText = CARROT_COUNT;
   //벌레와 당근을 생성한 뒤 field에 추가해줌
@@ -125,13 +137,16 @@ function onFieldClick(event) {
     }
   } else if (target.matches('.bug')) {
     //벌레
-    stopGameTimer();
     finishGame(false);
   }
 }
 
 function playSound(sound) {
+  sound.currentTime = 0;
   sound.play();
+}
+function stopSound(sound) {
+  sound.pause();
 }
 
 function updateScoreBoard() {

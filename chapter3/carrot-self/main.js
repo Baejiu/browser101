@@ -9,21 +9,25 @@ const resultLost = document.querySelector('.game__result--lost');
 const replayBtn = document.querySelectorAll('.replay-btn');
 const imgGame = document.querySelector('.ing-btn');
 const timerBox = document.querySelector('.header__timer');
+
 let bgSound = new Audio('./sound/bg.mp3');
 let alertSound = new Audio('./sound/alert.wav');
 let bugSound = new Audio('./sound/bug_pull.mp3');
 let carrotSound = new Audio('./sound/carrot_pull.mp3');
 let winSound = new Audio('./sound/game_win.mp3');
+
 let timer = 9;
 let count = 10;
 let carrotNumber = 10;
 let bugNumber = 10;
+
 for (var i = 0; i < replayBtn.length; i++) {
   var item = replayBtn.item(i);
   item.addEventListener('click', () => {
     gameReStart();
   });
 }
+
 headerBtn.addEventListener('click', () => {
   if (timer <= 8) {
     alertSound.play();
@@ -34,10 +38,12 @@ headerBtn.addEventListener('click', () => {
     gameStart();
   }
 });
+
 imgGame.addEventListener('click', () => {
   replayPop.style.display = 'none';
   timerStart();
 });
+
 function gameReStart() {
   resultWin.style.display = 'none';
   resultLost.style.display = 'none';
@@ -48,6 +54,7 @@ function gameReStart() {
   bugNumber = 10;
   gameStart();
 }
+
 function gameStart() {
   bgSound.play();
   count = 10;
